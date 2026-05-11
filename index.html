@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aeronautics — Create Mod Addon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ STEAM CANVAS ══ -->
+  <canvas id="steamCanvas"></canvas>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <svg class="nav-gear" viewBox="0 0 40 40"><use href="#gear-icon" /></svg>
+      <span>Aeronautics</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#showcase">Showcase</a></li>
+      <li><a href="#changelog">Changelog</a></li>
+      <li><a href="#download" class="nav-cta">Download</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <header class="hero" id="hero">
+    <div class="rivets">
+      <span class="rivet r1"></span><span class="rivet r2"></span>
+      <span class="rivet r3"></span><span class="rivet r4"></span>
+    </div>
+
+    <!-- Decorative gears -->
+    <svg class="gear-svg g-xl g-back" viewBox="0 0 200 200"><use href="#gear-big" /></svg>
+    <svg class="gear-svg g-lg g-mid"  viewBox="0 0 200 200"><use href="#gear-big" /></svg>
+    <svg class="gear-svg g-sm g-front" viewBox="0 0 120 120"><use href="#gear-small" /></svg>
+    <svg class="gear-svg g-md g-right" viewBox="0 0 160 160"><use href="#gear-med" /></svg>
+
+    <!-- Airship illustration -->
+    <div class="airship-wrap">
+      <div class="airship">
+        <div class="balloon">
+          <div class="balloon-band b1"></div>
+          <div class="balloon-band b2"></div>
+          <div class="balloon-band b3"></div>
+          <div class="balloon-highlight"></div>
+          <div class="valve"></div>
+        </div>
+        <div class="rigging">
+          <div class="rope rope-l"></div>
+          <div class="rope rope-r"></div>
+        </div>
+        <div class="gondola">
+          <div class="porthole p1"></div>
+          <div class="porthole p2"></div>
+          <div class="chimney ch1">
+            <div class="smoke-puff sp1"></div>
+            <div class="smoke-puff sp2"></div>
+            <div class="smoke-puff sp3"></div>
+          </div>
+          <div class="chimney ch2">
+            <div class="smoke-puff sp4"></div>
+            <div class="smoke-puff sp5"></div>
+          </div>
+          <div class="propeller-wrap">
+            <div class="propeller"></div>
+          </div>
+          <div class="fin-top"></div>
+          <div class="fin-bot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Create Mod Addon</p>
+      <h1 class="hero-title">
+        <span class="title-line">AERO</span>
+        <span class="title-line accent">NAUTICS</span>
+      </h1>
+      <p class="hero-tagline">
+        Conquer the skies with <em>brass, steam, and ingenuity.</em><br />
+        Build flying contraptions powered by the Create Mod.
+      </p>
+      <div class="hero-buttons">
+        <a href="#download" class="btn btn-primary">
+          <svg viewBox="0 0 20 20"><path d="M10 2v10M5 8l5 5 5-5"/><rect x="3" y="15" width="14" height="2" rx="1"/></svg>
+          Download
+        </a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">Minecraft 1.20.1</span>
+        <span class="badge">Forge &amp; Fabric</span>
+        <span class="badge">Create 0.5.1+</span>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </header>
+
+  <!-- ══ DIVIDER ══ -->
+  <div class="section-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,30 Q180,0 360,30 Q540,60 720,30 Q900,0 1080,30 Q1260,60 1440,30 L1440,60 L0,60 Z" fill="#1a0c04"/>
+    </svg>
+  </div>
+
+  <!-- ══ STATS BANNER ══ -->
+  <section class="stats-banner">
+    <div class="stat">
+      <span class="stat-num" data-target="2000000">0</span><span class="stat-suffix">+</span>
+      <p>Downloads</p>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <span class="stat-num" data-target="47">0</span>
+      <p>New Blocks &amp; Items</p>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <span class="stat-num" data-target="12">0</span>
+      <p>Airship Types</p>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <span class="stat-num" data-target="99">0</span><span class="stat-suffix">%</span>
+      <p>Steampunk Vibes</p>
+    </div>
+  </section>
+
+  <!-- ══ FEATURES ══ -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <svg class="gear-svg s-gear" viewBox="0 0 120 120"><use href="#gear-small" /></svg>
+      <h2>Engineered to Soar</h2>
+      <p class="section-sub">Aeronautics extends Create's kinetic systems into the third dimension, letting you design, build, and pilot fully functional flying machines.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64">
+            <ellipse cx="32" cy="20" rx="18" ry="12" class="icon-fill"/>
+            <rect x="22" y="32" width="20" height="14" rx="4" class="icon-fill-dark"/>
+            <circle cx="26" cy="37" r="3" class="icon-accent"/>
+            <circle cx="38" cy="37" r="3" class="icon-accent"/>
+            <line x1="32" y1="27" x2="27" y2="32" class="icon-stroke"/>
+            <line x1="32" y1="27" x2="37" y2="32" class="icon-stroke"/>
+          </svg>
+        </div>
+        <h3>Modular Airships</h3>
+        <p>Assemble your vessel block-by-block. Attach rotors, balloons, engines, and cargo holds to form a ship as unique as your vision.</p>
+        <div class="card-rivets">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="feature-card featured">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="10" class="icon-fill"/>
+            <g class="rotate-slow" style="transform-origin:32px 32px">
+              <rect x="30" y="8" width="4" height="12" rx="2" class="icon-accent"/>
+              <rect x="30" y="44" width="4" height="12" rx="2" class="icon-accent"/>
+              <rect x="8" y="30" width="12" height="4" rx="2" class="icon-accent"/>
+              <rect x="44" y="30" width="12" height="4" rx="2" class="icon-accent"/>
+            </g>
+          </svg>
+        </div>
+        <span class="card-badge">Flagship Feature</span>
+        <h3>Create Integration</h3>
+        <p>Directly power your contraptions with Create's rotational force. Waterwheels, windmills, and steam engines all feed into your flight systems.</p>
+        <div class="card-rivets">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64">
+            <path d="M16 48 L32 16 L48 48 Z" class="icon-fill"/>
+            <rect x="24" y="38" width="16" height="10" class="icon-fill-dark"/>
+            <circle cx="32" cy="35" r="4" class="icon-accent"/>
+          </svg>
+        </div>
+        <h3>Wind Currents</h3>
+        <p>Navigate dynamic wind systems that shift by biome and altitude. Master the currents and you'll cross entire continents without a drop of fuel.</p>
+        <div class="card-rivets">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64">
+            <rect x="12" y="28" width="40" height="18" rx="3" class="icon-fill-dark"/>
+            <rect x="16" y="24" width="32" height="8" rx="2" class="icon-fill"/>
+            <circle cx="24" cy="37" r="4" class="icon-accent"/>
+            <circle cx="32" cy="37" r="4" class="icon-accent"/>
+            <circle cx="40" cy="37" r="4" class="icon-accent"/>
+          </svg>
+        </div>
+        <h3>Autopilot Circuits</h3>
+        <p>Wire up redstone and Create's logic components to automate routes, altitude control, and landing procedures on your airships.</p>
+        <div class="card-rivets">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64">
+            <rect x="8" y="40" width="48" height="16" rx="2" class="icon-fill-dark"/>
+            <rect x="14" y="20" width="8" height="22" rx="1" class="icon-fill"/>
+            <rect x="28" y="12" width="8" height="30" rx="1" class="icon-fill"/>
+            <rect x="42" y="26" width="8" height="16" rx="1" class="icon-fill"/>
+            <ellipse cx="18" cy="18" rx="5" ry="6" class="icon-accent" style="opacity:.6"/>
+            <ellipse cx="32" cy="10" rx="5" ry="6" class="icon-accent"/>
+            <ellipse cx="46" cy="24" rx="5" ry="6" class="icon-accent" style="opacity:.7"/>
+          </svg>
+        </div>
+        <h3>Steam Propulsion</h3>
+        <p>Burn coal, wood, or blaze rods in your boiler to generate the steam pressure needed to drive massive rotary propulsion engines.</p>
+        <div class="card-rivets">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64">
+            <polygon points="32,6 38,24 58,24 42,36 48,54 32,42 16,54 22,36 6,24 26,24" class="icon-accent"/>
+          </svg>
+        </div>
+        <h3>Airship Combat</h3>
+        <p>Mount cannons and ballistas onto your vessel. Engage rival captains in aerial duels and defend your floating fortresses from sky pirates.</p>
+        <div class="card-rivets">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SHOWCASE ══ -->
+  <section class="showcase" id="showcase">
+    <div class="showcase-bg"></div>
+    <div class="showcase-inner">
+      <div class="section-header light">
+        <svg class="gear-svg s-gear invert" viewBox="0 0 120 120"><use href="#gear-small" /></svg>
+        <h2>Built by Captains Like You</h2>
+        <p class="section-sub">Community creations that push Aeronautics to its limits.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item gi-1">
+          <div class="gallery-thumb">
+            <div class="thumb-bg tb1"></div>
+            <div class="thumb-label">The Iron Duchess</div>
+          </div>
+          <p>A six-rotor cargo frigate with automated sorting and steam-powered winches.</p>
+        </div>
+        <div class="gallery-item gi-2">
+          <div class="gallery-thumb">
+            <div class="thumb-bg tb2"></div>
+            <div class="thumb-label">Storm Lancer</div>
+          </div>
+          <p>Sleek combat interceptor built for hit-and-run raids at high altitude.</p>
+        </div>
+        <div class="gallery-item gi-3">
+          <div class="gallery-thumb">
+            <div class="thumb-bg tb3"></div>
+            <div class="thumb-label">The Gilded Cloud</div>
+          </div>
+          <p>A luxury passenger liner carrying 16 players across the world in style.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HOW IT WORKS ══ -->
+  <section class="how-it-works" id="how">
+    <div class="section-header">
+      <svg class="gear-svg s-gear" viewBox="0 0 120 120"><use href="#gear-small" /></svg>
+      <h2>From Blueprint to the Clouds</h2>
+      <p class="section-sub">Three steps stand between you and the open sky.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">I</div>
+        <div class="step-content">
+          <h3>Forge Your Frame</h3>
+          <p>Lay out your ship's skeleton using Aeronautics' new structural beams and hull blocks. The larger the frame, the more lift and cargo capacity you'll have.</p>
+        </div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">II</div>
+        <div class="step-content">
+          <h3>Install the Engine</h3>
+          <p>Place a boiler, fuel it, and connect rotary shafts to your propellers. Tune the RPM using Create's cogwheel ratio system for maximum efficiency.</p>
+        </div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">III</div>
+        <div class="step-content">
+          <h3>Take the Helm</h3>
+          <p>Right-click the Captain's Wheel to assemble the contraption and take flight. Chart your course, adjust altitude with the barometric lever, and soar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CHANGELOG ══ -->
+  <section class="changelog" id="changelog">
+    <div class="changelog-inner">
+      <div class="section-header">
+        <svg class="gear-svg s-gear" viewBox="0 0 120 120"><use href="#gear-small" /></svg>
+        <h2>Captain's Log</h2>
+      </div>
+      <div class="log-entries">
+        <div class="log-entry">
+          <div class="log-date">v0.9.2 — 2026-04-18</div>
+          <ul>
+            <li>Added Brass Barometric Altimeter block</li>
+            <li>Fixed propeller torque calculation at high RPM</li>
+            <li>New wind current visualizer overlay (toggle: H)</li>
+            <li>Performance improvements for contraptions &gt;500 blocks</li>
+          </ul>
+        </div>
+        <div class="log-entry">
+          <div class="log-date">v0.9.0 — 2026-03-02</div>
+          <ul>
+            <li>Introduced Aerial Combat system with mounted cannons</li>
+            <li>Added 6 new biome-specific wind current types</li>
+            <li>Fabric port — now fully supported alongside Forge</li>
+            <li>Overhauled Autopilot routing with waypoint GUI</li>
+          </ul>
+        </div>
+        <div class="log-entry">
+          <div class="log-date">v0.8.5 — 2026-01-15</div>
+          <ul>
+            <li>Steam Turbine block — converts steam pressure to Create rotation</li>
+            <li>New hull material: Riveted Iron Plating</li>
+            <li>Fixed crash when disassembling contraptions near chunk borders</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DOWNLOAD ══ -->
+  <section class="download" id="download">
+    <div class="download-bg-gears">
+      <svg class="gear-svg dl-g1" viewBox="0 0 200 200"><use href="#gear-big" /></svg>
+      <svg class="gear-svg dl-g2" viewBox="0 0 160 160"><use href="#gear-med" /></svg>
+      <svg class="gear-svg dl-g3" viewBox="0 0 120 120"><use href="#gear-small" /></svg>
+    </div>
+    <div class="download-inner">
+      <h2>Ready to Set Sail?</h2>
+      <p>Aeronautics is free and open-source. Grab it from your preferred mod platform.</p>
+      <div class="download-cards">
+        <a href="#" class="dl-card">
+          <div class="dl-icon cf-icon"></div>
+          <div>
+            <strong>CurseForge</strong>
+            <span>v0.9.2 — Latest</span>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#" class="dl-card">
+          <div class="dl-icon mr-icon"></div>
+          <div>
+            <strong>Modrinth</strong>
+            <span>v0.9.2 — Latest</span>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#" class="dl-card dl-github">
+          <div class="dl-icon gh-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </div>
+          <div>
+            <strong>GitHub</strong>
+            <span>Source &amp; Issues</span>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="req-note">Requires: <strong>Minecraft 1.20.1</strong> · <strong>Create 0.5.1+</strong> · <strong>Forge 47.x or Fabric 0.14+</strong></p>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-gears">
+      <svg class="gear-svg ft-g" viewBox="0 0 120 120"><use href="#gear-small" /></svg>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg class="nav-gear" viewBox="0 0 40 40"><use href="#gear-icon" /></svg>
+        <span>Aeronautics</span>
+        <p>A community-made addon for the Create Mod.<br/>Not affiliated with the Create team.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Links</h4>
+        <a href="#">CurseForge</a>
+        <a href="#">Modrinth</a>
+        <a href="#">GitHub</a>
+        <a href="#">Wiki</a>
+      </div>
+      <div class="footer-links">
+        <h4>Community</h4>
+        <a href="#">Discord</a>
+        <a href="#">Reddit</a>
+        <a href="#">Twitter / X</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Aeronautics Project · MIT License · Made with ⚙️ and ☕</p>
+    </div>
+  </footer>
+
+  <!-- ══ SVG DEFS ══ -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <symbol id="gear-icon" viewBox="0 0 40 40">
+        <path d="M20 12a8 8 0 100 16 8 8 0 000-16zm0 12a4 4 0 110-8 4 4 0 010 8z" fill="currentColor"/>
+        <path d="M17 2h6l1 4a11 11 0 012.6 1.5l4-1 3 5.2-3 3a11 11 0 010 3l3 3L30.6 26l-4-1A11 11 0 0123 26.5l-1 4h-6l-1-4A11 11 0 0112.4 25l-4 1L5.2 20.8l3-3a11 11 0 010-3l-3-3L8.4 6.6l4 1A11 11 0 0117 6z" fill="currentColor"/>
+      </symbol>
+      <symbol id="gear-big" viewBox="0 0 200 200">
+        <path d="M85 5h30l4 18a70 70 0 0118 10.5l18-5 15 26-13 13a70 70 0 010 15l13 13-15 26-18-5a70 70 0 01-18 10.5l-4 18H85l-4-18A70 70 0 0163 116.5l-18 5-15-26 13-13a70 70 0 010-15L30 54.5l15-26 18 5A70 70 0 0181 23zM100 65a35 35 0 100 70 35 35 0 000-70z" fill="currentColor" opacity=".9"/>
+      </symbol>
+      <symbol id="gear-med" viewBox="0 0 160 160">
+        <path d="M68 4h24l3.2 14.4A56 56 0 0109.6 26.8L20 20l12 20.8-10.4 10.4A56 56 0 0124 69.6L9.6 72v24L24 98.4a56 56 0 012.4 17.6L16 126.4 28 147.2l14.4-4a56 56 0 0114.4 8.4L60 164h40l3.2-12.4a56 56 0 0114.4-8.4l14.4 4 12-20.8-10.4-10.4a56 56 0 012.4-17.6L150 96V72l-14.4-2.4a56 56 0 012.4-17.6L148 41.6 136 20.8l-14.4 4A56 56 0 00107.2 16.4zM80 50a30 30 0 100 60 30 30 0 000-60z" fill="currentColor" opacity=".9"/>
+      </symbol>
+      <symbol id="gear-small" viewBox="0 0 120 120">
+        <path d="M51 3h18l2.4 10.8a42 42 0 0110.8 6.3L93 17.1l9 15.6-7.8 7.8a42 42 0 010 13.2L102 61.5v18L91.2 81.9a42 42 0 01-10.8 6.3L78 99H51l-1.8-10.8A42 42 0 0138.4 82.2L27 85.2l-9-15.6 7.8-7.8a42 42 0 010-13.2L18 46.5v-18l10.8-2.4a42 42 0 0110.8-6.3zM60 37.5a22.5 22.5 0 100 45 22.5 22.5 0 000-45z" fill="currentColor" opacity=".9"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="main.js"></script>
+</body>
+</html>
