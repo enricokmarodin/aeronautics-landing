@@ -1042,10 +1042,7 @@ body {
   box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
 }
 
-.cf-icon::after { content: 'CF'; }
-.mr-icon::after { content: 'MR'; }
-
-.gh-icon svg {
+.dl-icon svg {
   width: 22px; height: 22px;
   fill: var(--brass);
 }
